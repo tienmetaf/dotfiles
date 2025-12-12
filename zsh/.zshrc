@@ -117,9 +117,15 @@ alias vim=nvim
 alias vi=nvim 
 alias lua='cd ~/.config/nvim/lua/'
 alias luainit='cd ~/.config/nvim/'
-alias ma='cd ~/workspace/metaf-admin; nvim'
-alias mb='cd ~/workspace/metaf-backend; nvim'
-alias mw='cd ~/workspace/metaf-web; nvim'
+
+# ------------ SPECIFIC PROJECTS --------------------
+alias mao='cd ~/workspace/metaf/metaf-admin; nvim'
+alias mbo='cd ~/workspace/metaf/metaf-backend; nvim'
+alias mwo='cd ~/workspace/metaf/metaf-web; nvim'
+alias ma='cd ~/workspace/metaf/metaf-admin;'
+alias mb='cd ~/workspace/metaf/metaf-backend;'
+alias mw='cd ~/workspace/metaf/metaf-web;'
+# --------------------------------------------------
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
