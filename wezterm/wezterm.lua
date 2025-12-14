@@ -36,13 +36,17 @@ config.font = wezterm.font_with_fallback({
 config.font_size = 14
 config.line_height = 1.4
 
+config.window_padding = {
+    left = 0,
+    right = 0,
+    -- top = 0,
+    bottom = 0,
+}
+
 -- Color Configuration
--- config.colors = require("cyberdream")
 config.force_reverse_video_cursor = true
 
 -- Window Configuration
-config.initial_rows = 24
-config.initial_cols = 120
 config.window_decorations = "TITLE | RESIZE"
 config.window_background_opacity = opacity
 config.window_background_image = (os.getenv("WEZTERM_CONFIG_FILE") or ""):gsub("wezterm.lua", "bg-blurred.png")
