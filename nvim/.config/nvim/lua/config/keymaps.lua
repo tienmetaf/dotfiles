@@ -24,7 +24,12 @@ map("n", "+", "<C-a>", { desc = "Increment number" })
 map("n", "-", "<C-x>", { desc = "Decrement number" })
 
 -- Map: Chọn toàn bộ file (thay đổi mặc định của <C-a>)
-map("n", "<C-a>", "ggVG", { desc = "Select all contents" })
+map("n", "<C-a>", function()
+  -- Đảm bảo thực thi chuỗi lệnh ggVG
+  vim.cmd("normal! ggVG")
+  -- Đảm bảo màn hình được vẽ lại (redraw)
+  vim.cmd("redraw!")
+end, { desc = "Select all contents (Reliable)", silent = true })
 
 -- Map: Lưu file và Thoát
 map("n", "<Leader>w", ":update<Return>", { desc = "Save file" })
