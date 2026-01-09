@@ -4,6 +4,9 @@
 
 -- Định nghĩa hàm map và tùy chọn chung
 local map = vim.keymap.set
+local function current_dir()
+  return vim.fn.expand("%:p:h")
+end
 -- =========================================================================
 -- I. BASIC & NAVIGATION
 -- =========================================================================
@@ -99,10 +102,12 @@ local function dotnet_new_project(template, entry_file_fn)
       return
     end
 
-    vim.cmd("!dotnet new " .. template .. " -n " .. name)
+    local dir = current_dir()
+
+    vim.cmd("!dotnet new " .. template .. " -n " .. name .. " -o " .. dir .. "/" .. name)
 
     if entry_file_fn then
-      local file = entry_file_fn(name)
+      local file = dir .. "/" .. entry_file_fn(name)
       vim.cmd("edit " .. file)
     end
   end
@@ -164,5 +169,8 @@ map("n", "<leader>ns", function()
     return
   end
 
-  vim.cmd("!dotnet new sln -n " .. name)
+  local dir = current_dir()
+
+  vim.cmd("!dotnet new sln -n " .. name .. " -o " .. dir)
+  vim.cmd("edit " .. dir .. "/" .. name .. ".sln")
 end, { desc = "New solution" })
